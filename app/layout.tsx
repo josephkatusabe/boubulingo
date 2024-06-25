@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
+import { Nunito } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
+import { ExitModel } from "@/components/models/exit-model";
+import { HeartsModel } from "@/components/models/hearts-model";
+import { PracticeModel } from "@/components/models/practice-model";
 
-const inter = Inter({ subsets: ["latin"] });
+const nunito = Nunito({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +20,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={nunito.className}>
+          <Toaster />
+          <ExitModel />
+          <HeartsModel />
+          <PracticeModel />
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

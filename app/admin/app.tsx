@@ -26,6 +26,7 @@ const dataProvider = simpleRestProvider("/api")
 
 const App = () => {
     return (
+        // @ts-ignore
         <Admin dataProvider={dataProvider}>
             <Resource 
                 name="courses"
